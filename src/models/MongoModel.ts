@@ -23,12 +23,12 @@ export default abstract class MongoModel<T> implements IModel<T> {
   }
   
   public async update(_id: string, obj: T): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw Error(ErrorTypes.InvalidMongoId);
+    if (!isValidObjectId(_id)) throw new Error(ErrorTypes.InvalidMongoId);
     return this._model.findByIdAndUpdate(_id, obj);
   }
 
   public async delete(_id: string): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw Error(ErrorTypes.InvalidMongoId);
+    if (!isValidObjectId(_id)) throw new Error(ErrorTypes.InvalidMongoId);
     return this._model.findByIdAndDelete(_id);
   }
 }
