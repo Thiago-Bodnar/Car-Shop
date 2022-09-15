@@ -25,8 +25,10 @@ export default class CarService implements IService<ICar> {
 
     return updated as ICar & { _id: string };
   }
-  delete(_id: string): Promise<ICar | null> {
-    return this._car.delete(_id);
+  public async delete(_id: string): Promise<ICar | null> {
+    const car = await this._car.delete(_id);
+    if (!car) throw new Error(ErrorTypes.EntityNotFound);
+    return car;
   }
   public async create(obj:unknown): Promise<ICar & { _id: string }> {
     const parsed = carZodSchema.safeParse(obj);
