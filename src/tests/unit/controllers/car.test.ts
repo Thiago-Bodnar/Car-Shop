@@ -36,13 +36,13 @@ describe('Car Controller', () => {
     });
   });
 
-  // describe('ReadOne Car', () => {
-  //   it('Sucess', async () => {
-  //     req.params = { id: carMockWithId._id };
-  //     await carController.readOne(req, res);
+  describe('ReadOne Car', () => {
+    it('Sucess', async () => {
+      req.params = { id: carMockWithId._id };
+      await carController.readOne(req, res);
 
-  //     expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
-  //     expect((res.json as sinon.SinonStub).calledWith(carMock)).to.be.true;
-  //   });
-  // });
+      expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(carMockWithId)).to.be.true;
+    });
+  });
 });
