@@ -8,7 +8,7 @@ const motorcycleZodSchema = vehicleZodSchema.extend({
     invalid_type_error: 'engineCapacity must be a number',
   }).int()    
     .positive()
-    .lte(2500, { message: 'engineCapacity must be less than 2500' }),
+    .lte(2500),
 });
 
 type IMotorcycle = z.infer<typeof motorcycleZodSchema>;
