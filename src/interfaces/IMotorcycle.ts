@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { vehicleZodSchema } from './IVehicle';
 
-const motorcycleSchema = vehicleZodSchema.extend({
+const motorcycleZodSchema = vehicleZodSchema.extend({
   category: z.enum(['Street', 'Custom', 'Trail']),
   engineCapacity: z.number({
     required_error: 'engineCapacity is required',
@@ -11,6 +11,6 @@ const motorcycleSchema = vehicleZodSchema.extend({
     .lte(2500, { message: 'engineCapacity must be less than 2500' }),
 });
 
-type IMotorcycle = z.infer<typeof motorcycleSchema>;
+type IMotorcycle = z.infer<typeof motorcycleZodSchema>;
 
-export { motorcycleSchema, IMotorcycle };
+export { motorcycleZodSchema, IMotorcycle };
