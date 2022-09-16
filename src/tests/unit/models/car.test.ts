@@ -5,6 +5,7 @@ const { expect } = chai;
 import CarModel from '../../../models/CarModel';
 import { Model } from 'mongoose';
 import { carMock, carMockWithId } from '../../mocks/carMock';
+import { ErrorTypes } from '../../../errors/catalog';
 
 describe('Car Model', () => {
   const carModel = new CarModel();
@@ -39,7 +40,7 @@ describe('Car Model', () => {
       try {
         await carModel.readOne('wrong_id');
       } catch (error: any) {
-        expect(error.message).to.be.equals('InvalidMongoId');
+        expect(error.message).to.be.equals(ErrorTypes.InvalidMongoId);
       }
     });
   });
